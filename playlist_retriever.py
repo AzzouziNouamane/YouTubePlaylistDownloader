@@ -11,13 +11,16 @@ import googleapiclient.discovery
 import googleapiclient.errors
 
 import sys
+import playlist_items
 
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
 idPlayList = sys.argv[1]
+youtube = 'test'
 
-def main():
-    # Disable OAuthlib's HTTPS verification when running locally.
+
+def getting_started():
+     # Disable OAuthlib's HTTPS verification when running locally.
     # *DO NOT* leave this option enabled in production.
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
@@ -29,17 +32,26 @@ def main():
     flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
         client_secrets_file, scopes)
     credentials = flow.run_console()
+    global youtube
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, credentials=credentials)
 
+def main():
+    print(youtube)
     request = youtube.playlists().list(
         part="contentDetails",
         id = idPlayList,
         maxResults=25,
     )
-    response = request.execute()
-
+    response = request.execute()['items'][0]['contentDetails']['itemCount']
     print(response)
+    return response
 
 if __name__ == "__main__":
-    main()
+    getting_started()
+    currentItems = main()
+    
+    while(True):
+        if main() != currentItems: 
+            currentItems = main()
+            print(playlist_items.main(youtube))
