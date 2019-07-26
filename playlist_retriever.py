@@ -12,6 +12,8 @@ import googleapiclient.errors
 
 import sys
 import playlist_items
+import apidownload_test
+import time
 
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
@@ -55,3 +57,5 @@ if __name__ == "__main__":
         if main() != currentItems: 
             currentItems = main()
             print(playlist_items.main(youtube))
+            apidownload_test.downloadVideo(playlist_items.main(youtube))
+        time.sleep(10)
