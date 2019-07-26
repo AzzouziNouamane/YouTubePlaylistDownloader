@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Sample Python code for youtube.playlists.list
+# Sample Python code for youtube.playlistItems.list
 # See instructions for running these code samples locally:
 # https://developers.google.com/explorer-help/guides/code_samples#python
 
@@ -11,10 +11,9 @@ import googleapiclient.discovery
 import googleapiclient.errors
 
 import sys
+import json
 
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
-
-idPlayList = sys.argv[1]
 
 def main():
     # Disable OAuthlib's HTTPS verification when running locally.
@@ -32,14 +31,21 @@ def main():
     youtube = googleapiclient.discovery.build(
         api_service_name, api_version, credentials=credentials)
 
-    request = youtube.playlists().list(
+    request = youtube.playlistItems().list(
         part="contentDetails",
-        id = idPlayList,
-        maxResults=25,
+        maxResults = 25,
+        playlistId= sys.argv[1]
     )
     response = request.execute()
 
-    print(response)
+    itemsCount = len(response['items'])
+    print(itemsCount)
+
+    videoId = request.execute()['items'][itemsCount-1]['contentDetails']['videoId']
+    print(videoId)
+
+
+#lastVideoId = 
 
 if __name__ == "__main__":
     main()
