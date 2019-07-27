@@ -20,7 +20,7 @@ You will find it in the URL of the YouTube playlist, for example :
 ```
 https://www.youtube.com/playlist?list=PLwovxsrPtS6-fMl-8mlbQQtWI73KQdVO1
 ```
-The YouTube Playlist's ID is "PLwovxsrPtS6-fMl-8mlbQQtWI73KQdVO1"
+The YouTube Playlist's ID is **PLwovxsrPtS6-fMl-8mlbQQtWI73KQdVO1**
 
 So, as an example, here is a line to copy/paste in your terminal in order to execute the script : 
 ```
