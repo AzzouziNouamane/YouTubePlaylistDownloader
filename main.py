@@ -17,26 +17,23 @@ import time
 
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
-idPlayList = sys.argv[1]
+myURL = sys.argv[1]
+urlSplit = myURL.split('=')
+idPlayList = urlSplit[1]
 youtube = 'test'
 
 
 def getting_started():
-     # Disable OAuthlib's HTTPS verification when running locally.
+    # Disable OAuthlib's HTTPS verification when running locally.
     # *DO NOT* leave this option enabled in production.
     os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
     api_service_name = "youtube"
     api_version = "v3"
-    client_secrets_file = "client_secret_1051928112662-sp9fsvirijfvkblh2fpvkupe1kpd8u1d.apps.googleusercontent.com.json"
-
-    # Get credentials and create an API client
-    flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
-        client_secrets_file, scopes)
-    credentials = flow.run_console()
+    DEVELOPER_KEY = "AIzaSyBfL8zCeNuFUrbIu_uTEtBQeWt0N2ZE4ic"
     global youtube
     youtube = googleapiclient.discovery.build(
-        api_service_name, api_version, credentials=credentials)
+        api_service_name, api_version, developerKey = DEVELOPER_KEY)
 
 def main():
     print(youtube)
@@ -54,7 +51,10 @@ if __name__ == "__main__":
     currentItems = main()
     
     while(True):
-        if main() != currentItems: 
+        if main() < currentItems:
+            currentItems = main()
+
+        if main() > currentItems: 
             currentItems = main()
             print(playlist_items.main(youtube))
             apidownload_test.downloadVideo(playlist_items.main(youtube))
