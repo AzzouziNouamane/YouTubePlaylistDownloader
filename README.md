@@ -1,8 +1,8 @@
 # YouTubePlaylistDownloader
 
 ## Getting Started
-This script's job is to check continuously any playlist on YouTube (You can track it by its ID), and to download it automatically to your desktop.
-YouTubePlaylistDownloader uses YouTube's API to track your desired playlist, and uses PyTube to download the latest videos added to the playlist.
+This script's job is to check continuously any playlist on YouTube (You can track it by its URL), and to download it automatically to your desktop.
+YouTubePlaylistDownloader uses **YouTube's API** to track your desired playlist, and uses **PyTube** to download the latest videos added to the playlist.
 
 
 ### Prerequisites
