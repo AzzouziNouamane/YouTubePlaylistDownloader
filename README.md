@@ -17,11 +17,15 @@ The main .py file to execute the program is "main.py" obviously.
 
 You'll need to enter 1 argument : The YouTube playlist's ID.
 You will find it in the URL of the YouTube playlist, for example : 
-``https://www.youtube.com/playlist?list=PLwovxsrPtS6-fMl-8mlbQQtWI73KQdVO1``
+```
+https://www.youtube.com/playlist?list=PLwovxsrPtS6-fMl-8mlbQQtWI73KQdVO1
+```
 The YouTube Playlist's ID is "PLwovxsrPtS6-fMl-8mlbQQtWI73KQdVO1"
 
 So, as an example, here is a line to copy/paste in your terminal in order to execute the script : 
-``python .\main.py PLwovxsrPtS6-fMl-8mlbQQtWI73KQdVO1``
+```
+python .\main.py PLwovxsrPtS6-fMl-8mlbQQtWI73KQdVO1
+```
 
 After that, a special token will be needed. You can obtain it after linking your Google Account with the script.
 
