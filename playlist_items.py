@@ -15,12 +15,12 @@ import json
 
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
-def main(youtube):
+def main(youtube, playlistID):
 
     request = youtube.playlistItems().list(
         part="contentDetails",
         maxResults = 25,
-        playlistId= sys.argv[1]
+        playlistId= playlistID
     )
     response = request.execute()
 

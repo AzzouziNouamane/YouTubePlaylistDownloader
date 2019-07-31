@@ -17,7 +17,7 @@ import time
 
 scopes = ["https://www.googleapis.com/auth/youtube.readonly"]
 
-myURL = sys.argv[1]
+myURL = input("Please enter your YouTube Playlist's URL : ")
 urlSplit = myURL.split('=')
 idPlayList = urlSplit[1]
 youtube = 'test'
@@ -56,6 +56,6 @@ if __name__ == "__main__":
 
         if main() > currentItems: 
             currentItems = main()
-            print(playlist_items.main(youtube))
-            apidownload_test.downloadVideo(playlist_items.main(youtube))
+            print(playlist_items.main(youtube, idPlayList))
+            apidownload_test.downloadVideo(playlist_items.main(youtube, idPlayList))
         time.sleep(10)
